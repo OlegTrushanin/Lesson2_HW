@@ -2,8 +2,8 @@ package java_vtb_Lesson2_HW;
 
 public interface Action {
 
-    public void run(int length_track);
+    public void action(Let let);
 
-    public void jump(int wall_height);
+
 
 }

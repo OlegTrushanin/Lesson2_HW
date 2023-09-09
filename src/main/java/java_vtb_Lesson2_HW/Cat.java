@@ -15,35 +15,32 @@ public class Cat implements Action{
     }
 
     @Override
-    public void run(int length_track){
+    public void action(Let let) {
 
-        if(stop) {
-            if (length_track <= length_max) {
-                System.out.println("Кот " + this.name + " пробежал " + length_max + "  км.");
+        if (let instanceof Treadmill) {
+            if (stop) {
+                if (((Treadmill) let).length_track <= length_max) {
+                    System.out.println("Кот " + this.name + " пробежал " + length_max + "  км.");
+                } else {
+                    System.out.println("Кот может пробежать не более " + length_max + " км.");
+                }
             } else {
-                System.out.println("Кот может пробежать не более " + length_max + " км.");
+                System.out.println("Кот " + this.name + " сошел с дистанции");
             }
-        }else{
-            System.out.println("Кот " + this.name + " сошел с дистанции");
+
+        } else {
+            if (stop) {
+                if (((Wall) let).wall_height <= wall_max) {
+                    System.out.println("Кот " + this.name + " перепрыгнул препятствие " + wall_max + " м.");
+                } else {
+                    System.out.println("Кот может перепрыгнуть препятствие не более " + wall_max + " м.");
+                }
+            } else {
+                System.out.println("Кот " + this.name + " сошел с дистанции");
+            }
         }
 
     }
 
-
-
-    @Override
-    public void jump(int wall_height){
-        if(stop) {
-            if (wall_height <= wall_max) {
-                System.out.println("Кот " + this.name + " перепрыгнул препятствие " + wall_max + " м.");
-            } else {
-                System.out.println("Кот может перепрыгнуть препятствие не более " + wall_max + " м.");
-            }
-        }else{
-            System.out.println("Кот " + this.name + " сошел с дистанции");
-        }
-
-
-    }
 
 }
