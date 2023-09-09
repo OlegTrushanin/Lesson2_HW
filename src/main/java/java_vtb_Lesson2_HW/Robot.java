@@ -11,18 +11,19 @@ public class Robot implements Action{
     public Robot(String name){
 
         this.name = name;
-        boolean stop = true;
+        this.stop = true;
     }
 
     @Override
     public void action(Let let) {
 
         if (let instanceof Treadmill) {
-            if (stop) {
+            if (this.stop) {
                 if (((Treadmill) let).length_track <= length_max) {
-                    System.out.println("Робот " + this.name + " пробежал " + length_max + "  км.");
+                    System.out.println("Робот " + this.name + " пробежал " + ((Treadmill) let).length_track + "  км.");
                 } else {
                     System.out.println("Робот может пробежать не более " + length_max + " км.");
+                    stop = false;
                 }
             } else {
                 System.out.println("Робот " + this.name + " сошел с дистанции");
@@ -31,9 +32,10 @@ public class Robot implements Action{
         } else {
             if (stop) {
                 if (((Wall) let).wall_height <= wall_max) {
-                    System.out.println("Робот " + this.name + " перепрыгнул препятствие " + wall_max + " м.");
+                    System.out.println("Робот " + this.name + " перепрыгнул препятствие " + ((Wall) let).wall_height + " м.");
                 } else {
                     System.out.println("Робот может перепрыгнуть препятствие не более " + wall_max + " м.");
+                    stop = false;
                 }
             } else {
                 System.out.println("Робот " + this.name + " сошел с дистанции");

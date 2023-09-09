@@ -28,17 +28,27 @@ public class MainApp {
                 new Treadmill(0.4),
                 new Treadmill(0.2),
                 new Wall(20),
+                new Wall(20),
+                new Wall(20)
 
 
         };
 
 
-        for(Action a: subjects){
+       for(Action a: subjects){
             for(Let b: let){
 
                 a.action(b);
             }
         }
+
+       /* Cat cat = new Cat("Барсик");
+        Human human = new Human("Oleg");
+
+        Treadmill treadmill = new Treadmill(0.2);
+
+        cat.action(treadmill);
+*/
 
 
 
